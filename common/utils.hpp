@@ -77,7 +77,7 @@ void makeSparse(const double sparsity, T (*X)) {
 #ifndef USING_R
     srand(RAND_SEED_SPARSE);
 #endif
-#pragma omp parallel for default(none) shared(sparsity, X)
+#pragma omp parallel for default(none) shared(X)
     for (int j = 0; j < X->n_cols; j++) {
         for (arma::uword i = 0; i < X->n_rows; i++) {
             if (arma::randu() > sparsity) (*X)(i, j) = 0;
